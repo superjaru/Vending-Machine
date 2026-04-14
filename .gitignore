@@ -7,7 +7,6 @@ backend/node_modules/
 
 # Env files
 .env
-.env.local
 .env.*.local
 
 # Build outputs
@@ -22,3 +21,4 @@ yarn-error.log*
 
 # OS
 .DS_Store
+.vscode

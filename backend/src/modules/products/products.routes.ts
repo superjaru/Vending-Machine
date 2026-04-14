@@ -11,20 +11,7 @@ router.get('/',
   asyncHandler(ProductController.getAll),
 )
 
-router.get('/:id',
-  param('id').isInt(),
-  validate,
-  asyncHandler(ProductController.getById),
-)
 
-router.post('/',
-  body('name').notEmpty().trim(),
-  body('price_thb').isFloat({ min: 0 }),
-  body('category').optional().trim(),
-  body('image_url').optional().isURL(),
-  validate,
-  asyncHandler(ProductController.create),
-)
 
 router.patch('/:id',
   param('id').isInt(),

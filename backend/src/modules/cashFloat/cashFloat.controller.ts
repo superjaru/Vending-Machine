@@ -22,8 +22,4 @@ export const CashFloatController = {
     );
     res.json({ success: true, data });
   },
-
-  getSummary: async (_req: Request, res: Response) => {
-    res.json({ success: true, data: await cashFloatService.getSummary() });
-  },
 };

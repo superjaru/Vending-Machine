@@ -18,10 +18,6 @@ export class CashFloatService {
     if (!row) throw new AppError('Cash float record not found', 404)
     return row
   }
-
-  getSummary() {
-    return cashFloatRepo.getSummary()
-  }
 }
 
 export const cashFloatService = new CashFloatService()

@@ -9,14 +9,6 @@ export class InventoryService {
     if (!machine) throw new AppError('Machine not found', 404)
     return inventoryRepo.findByMachine(machineId)
   }
-
-  setStock(machineId: number, productId: number, dto: SetInventoryDto) {
-    return inventoryRepo.upsert(machineId, productId, dto)
-  }
-
-  getLowStock() {
-    return inventoryRepo.getLowStock()
-  }
 }
 
 export const inventoryService = new InventoryService()

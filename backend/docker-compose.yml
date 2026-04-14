@@ -7,3 +7,12 @@ services:
     environment:
       POSTGRES_DB: vending_db
       POSTGRES_HOST_AUTH_METHOD: trust
+  vending-apis:
+    build: .
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres

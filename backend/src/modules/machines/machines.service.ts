@@ -19,15 +19,6 @@ export class MachineService {
     return row;
   }
 
-  create(dto: CreateMachineDto) {
-    return machineRepo.create(dto);
-  }
-
-  async update(id: number, dto: UpdateMachineDto) {
-    const row = await machineRepo.update(id, dto);
-    if (!row) throw new AppError("Machine not found", 404);
-    return row;
-  }
 }
 
 export const machineService = new MachineService();

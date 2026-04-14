@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
-import locationRoutes from "./modules/locations/locations.routes";
 import machineRoutes from "./modules/machines/machines.routes";
 import productRoutes from "./modules/products/products.routes";
 import inventoryRoutes from "./modules/inventory/inventory.routes";
@@ -24,7 +23,6 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-app.use("/api/v1/locations", locationRoutes);
 app.use("/api/v1/machines", machineRoutes);
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/inventory", inventoryRoutes);

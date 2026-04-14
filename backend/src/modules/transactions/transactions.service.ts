@@ -62,27 +62,10 @@ export class TransactionService {
         await cashFloatRepo.increment(machine_id, p.denomination_id, p.quantity, trx);
       }
 
-      // 5. Run greedy change algorithm against updated float
       const float = await cashFloatRepo.findFloatForChange(machine_id, trx);
       const changeBreakdown = calculateChange(changeCash, float);
 
-      // 6. Persist transaction record
-      // const tx = await transactionRepo.create(
-      //   {
-      //     machine_id,
-      //     product_id,
-      //     product_price_thb: product.price,
-      //     amount_inserted_thb: (insertedCash / 100).toFixed(2),
-      //     change_given_thb: (changeCash / 100).toFixed(2),
-      //   },
-      //   trx,
-      // );
-
-      // // 7. Persist payment + change breakdown rows
-      // await transactionRepo.insertPayments(tx.id, payments, trx);
-      // await transactionRepo.insertChange(tx.id, changeBreakdown, trx);
-
-      // 8. Deduct change from float and decrement product stock
+      // 5. Deduct change from float and decrement product stock
       for (const c of changeBreakdown) {
         await cashFloatRepo.decrement(machine_id, c.denomination_id, c.quantity, trx);
       }

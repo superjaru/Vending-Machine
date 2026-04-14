@@ -32,18 +32,6 @@ export class InventoryRepository {
       .first()
   }
 
-  // upsert(
-  //   machineId: number,
-  //   productId: number,
-  //   dto: SetInventoryDto,
-  // ): Promise<MachineInventory> {
-  //   return db('machine_inventory')
-  //     .insert({ machine_id: machineId, product_id: productId, ...dto })
-  //     .onConflict(['machine_id', 'product_id'])
-  //     .merge({ ...dto, updated_at: db.fn.now() })
-  //     .returning('*')
-  //     .then(([row]) => row)
-  // }
 
   async decrementStock(
     machineId: number,
@@ -56,9 +44,6 @@ export class InventoryRepository {
       .update({ updated_at: trx.fn.now() })
   }
 
-  // getLowStock(): Promise<LowStockRow[]> {
-  //   return db('v_low_stock').orderBy('location_name').orderBy('machine_name')
-  // }
 }
 
 export const inventoryRepo = new InventoryRepository()

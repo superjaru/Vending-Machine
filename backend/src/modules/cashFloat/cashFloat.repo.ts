@@ -70,9 +70,6 @@ export class CashFloatRepository {
       .decrement("stock", qty);
   }
 
-  getSummary(): Promise<CashFloatSummaryRow[]> {
-    return db("v_cash_float_summary").orderBy("machine_id");
-  }
 }
 
 export const denominationRepo = new DenominationRepository();

@@ -18,20 +18,4 @@ router.get('/:id',
   asyncHandler(MachineController.getById),
 )
 
-router.post('/',
-  body('location_id').isInt(),
-  body('serial_number').notEmpty().trim(),
-  body('name').optional().trim(),
-  validate,
-  asyncHandler(MachineController.create),
-)
-
-router.patch('/:id',
-  param('id').isInt(),
-  body('status').optional().isIn(['active', 'maintenance', 'offline']),
-  body('name').optional().trim(),
-  validate,
-  asyncHandler(MachineController.update),
-)
-
 export default router

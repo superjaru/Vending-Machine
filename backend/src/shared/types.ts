@@ -1,9 +1,9 @@
-// ── Enums ─────────────────────────────────────────────────────
+// Enums
 export type MachineStatus = "active" | "maintenance" | "offline";
 export type TransactionStatus = "pending" | "completed" | "cancelled" | "refunded";
 export type DenominationType = "coin" | "note";
 
-// ── DB row shapes ──────────────────────────────────────────────
+// DB row schema interfaces
 export interface Location {
   id: number;
   name: string;

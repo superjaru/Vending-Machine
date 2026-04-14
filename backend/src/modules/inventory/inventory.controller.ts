@@ -8,7 +8,4 @@ export const InventoryController = {
       data: await inventoryService.getByMachine(Number(req.params.machineId)),
     });
   },
-
-
-
 };

@@ -31,17 +31,6 @@ export class MachineRepository {
       .first()
   }
 
-  create(dto: CreateMachineDto): Promise<Machine> {
-    return db('machines').insert(dto).returning('*').then(([row]) => row)
-  }
-
-  update(id: number, dto: UpdateMachineDto): Promise<Machine | undefined> {
-    return db('machines')
-      .where({ id })
-      .update({ ...dto, updated_at: db.fn.now() })
-      .returning('*')
-      .then(([row]) => row)
-  }
 }
 
 export const machineRepo = new MachineRepository()

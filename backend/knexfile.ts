@@ -1,31 +1,31 @@
-import type { Knex } from 'knex'
-import dotenv from 'dotenv'
+import type { Knex } from "knex";
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 const config: Knex.Config = {
-  client: 'pg',
+  client: "pg",
 
   connection: {
-    host:     process.env.DB_HOST     ?? 'localhost',
-    port:     Number(process.env.DB_PORT) || 5432,
-    database: process.env.DB_NAME     ?? 'vending_db',
-    user:     process.env.DB_USER     ?? 'postgres',
-    password: process.env.DB_PASSWORD ?? '',
+    host: process.env.DB_HOST ?? "localhost",
+    port: Number(process.env.DB_PORT) || 5432,
+    database: process.env.DB_NAME ?? "vending_db",
+    user: process.env.DB_USER ?? "postgres",
+    password: process.env.DB_PASSWORD ?? "",
   },
 
   pool: { min: 2, max: 10 },
 
   migrations: {
-    directory: './db/migrations',
-    tableName: 'knex_migrations',
-    extension: 'ts',
+    directory: "./db/migrations",
+    tableName: "knex_migrations",
+    extension: "ts",
   },
 
   seeds: {
-    directory: './db/seeds',
-    extension: 'ts',
+    directory: "./db/seeds",
+    extension: "ts",
   },
-}
+};
 
-export default config
+export default config;

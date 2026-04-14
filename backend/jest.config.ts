@@ -1,17 +1,18 @@
-import type { Config } from 'jest'
+import type { Config } from "jest";
 
 const config: Config = {
-  preset:              'ts-jest',
-  testEnvironment:     'node',
-  rootDir:             '.',
-  testMatch:           ['**/__tests__/**/*.test.ts'],
-  clearMocks:          true,
-  collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/index.ts',
-    '!src/db/index.ts',
-  ],
-  coverageDirectory:   'coverage',
-}
+  preset: "ts-jest",
+  testEnvironment: "node",
+  rootDir: ".",
+  testMatch: [
+    "**/__tests__/**/*.+(ts|tsx|js)",
+    "**/?(*.)+(spec|test).+(ts|tsx|js)",
+  ],  transform: {
+    "^.+\\.(js|ts)$": "ts-jest",
+  },
+  clearMocks: true,
+  collectCoverageFrom: ["src/**/*.ts", "!src/index.ts", "!src/db/index.ts"],
+  coverageDirectory: "coverage",
+};
 
-export default config
+export default config;
